@@ -1,0 +1,30 @@
+name: 'Bump Build Number on Merge'
+
+on:
+  pull_request:
+    branches:    
+      - 'main'
+    types: [ closed ]
+
+jobs:
+  bump-build-on-merge:
+    name: 'Bump Build Number on Merge'
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout source code'
+        uses: 'actions/checkout@v2'
+        with:
+          ref: ${{ github.ref }}
+      - name: 'cat package.json'
+        run: cat ./package.json
+      - name: 'Automated Build Number Bump'
+        id: buildNumber-bump
+        uses: 'Cdimock/gh-action-bump-buildNumber@run-durring-merge'
+        with:
+          tag-prefix: 'build/'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'cat package.json'
+        run: cat ./package.json

@@ -1,0 +1,4 @@
+Hello, edit me to test makeing changes in this repo to see how build number bumping works
+
+
+Making changes in a development branch should not bump build number    
