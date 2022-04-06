@@ -1,7 +1,7 @@
 {
   "name": "test-buildNumber-action",
   "version": "1.0.0",
-  "buildNumber": "9",
+  "buildNumber": "10",
   "description": "A Github Action used to bump buildNumber in the package.json file",
   "main": "index.js",
   "scripts": {
